@@ -5,52 +5,101 @@ import { ArrowRight, Check, Code, Layout, Database, Layers, Clock, Zap, Send, In
 import confetti from 'canvas-confetti';
 
 const questions = [
+  // --- Thinking Style (4 Questions) ---
   {
     id: 1,
-    question: "What sounds more fun?",
+    question: "When solving a problem, what's your first instinct?",
     options: [
-      { text: "Making things look good", value: "A", icon: <Layout className="w-6 h-6" /> },
-      { text: "Solving problems", value: "B", icon: <Code className="w-6 h-6" /> },
-      { text: "Doing both", value: "C", icon: <Layers className="w-6 h-6" /> }
+      { text: "Sketch or visualize the solution", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Break it down into logical steps", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Look for patterns in data", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Check for risks or loopholes", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
     ]
   },
   {
     id: 2,
-    question: "In an app, you notice…",
+    question: "Which type of project sounds most exciting?",
     options: [
-      { text: "Design & look", value: "A", icon: <Layout className="w-6 h-6" /> },
-      { text: "Speed & working", value: "B", icon: <Zap className="w-6 h-6" /> },
-      { text: "How it connects", value: "C", icon: <Layers className="w-6 h-6" /> }
+      { text: "Designing a beautiful mobile app", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Building a high-speed trading engine", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
+      { text: "Creating a realistic 3D game world", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> },
+      { text: "Training an AI to recognize faces", cluster: "Data", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 3,
-    question: "You enjoy work that is…",
+    question: "If you were building a house, what would you focus on?",
     options: [
-      { text: "Creative", value: "A", icon: <Layout className="w-6 h-6" /> },
-      { text: "Logical", value: "B", icon: <Code className="w-6 h-6" /> },
-      { text: "End-to-end", value: "C", icon: <Layers className="w-6 h-6" /> }
+      { text: "The interior design and curb appeal", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "The foundation and plumbing", cluster: "Backend", icon: <Layers className="w-6 h-6" /> },
+      { text: "The security system and locks", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "Smart home automation features", cluster: "GameDev", icon: <Zap className="w-6 h-6" /> }
     ]
   },
   {
     id: 4,
-    question: "You prefer to…",
+    question: "What annoys you most in technology?",
     options: [
-      { text: "Improve visuals", value: "A", icon: <Layout className="w-6 h-6" /> },
-      { text: "Fix how it works", value: "B", icon: <Code className="w-6 h-6" /> },
-      { text: "Build everything", value: "C", icon: <Layers className="w-6 h-6" /> }
-    ]
-  },
-  {
-    id: 5,
-    question: "You’d rather be known for…",
-    options: [
-      { text: "Great design sense", value: "A", icon: <Layout className="w-6 h-6" /> },
-      { text: "Strong problem solver", value: "B", icon: <Code className="w-6 h-6" /> },
-      { text: "Can build full products", value: "C", icon: <Layers className="w-6 h-6" /> }
+      { text: "Ugly, hard-to-use interfaces", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Slow loading times and crashes", cluster: "Backend", icon: <Clock className="w-6 h-6" /> },
+      { text: "Data inaccuracies and bad predictions", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Privacy leaks and hacked accounts", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
     ]
   },
 
+  // --- Interest Signals (3 Questions) ---
+  {
+    id: 5,
+    question: "Which news headline grabs your attention?",
+    options: [
+      { text: "New Design Trends for 2026", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "AI Model Solves Complex Math Problem", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
+      { text: "Major Cyber Attack Stops Bank", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "New Game Engine Released with Real-time Ray Tracing", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+    ]
+  },
+  {
+    id: 6,
+    question: "You have a free weekend. What do you do?",
+    options: [
+      { text: "Redesign your personal website", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Automate a boring daily task", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Analyze stock market trends", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Play and mod video games", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+    ]
+  },
+  {
+    id: 7,
+    question: "What's the coolest tech superpower?",
+    options: [
+      { text: "Creating anything you can imagine visually", cluster: "GameDev", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "Predicting the future with accuracy", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
+      { text: "Being invisible and untraceable", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "Building systems that serve millions", cluster: "Backend", icon: <Zap className="w-6 h-6" /> }
+    ]
+  },
+
+  // --- Reality Check (2 Questions) ---
+  {
+    id: 8,
+    question: "How do you feel about math and logic puzzles?",
+    options: [
+      { text: "I prefer visual creativity over math", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "I like logic, but not heavy math", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "I love advanced math and statistics", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "I enjoy cracking codes and encryption", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+    ]
+  },
+  {
+    id: 9,
+    question: "Which work environment sounds best?",
+    options: [
+      { text: "Visual, artistic, and user-focused", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "Structured, logical, and efficient", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "High-stakes, protective, and investigative", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "Immersive, interactive, and playful", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+    ]
+  }
 ];
 
 export default function App() {
@@ -75,8 +124,8 @@ export default function App() {
     // smooth scroll if needed, but we are replacing the view or staying in place
   };
 
-  const handleAnswer = (value) => {
-    const newAnswers = { ...answers, [currentQuestionIndex]: value };
+  const handleAnswer = (optionText) => {
+    const newAnswers = { ...answers, [currentQuestionIndex]: optionText };
     setAnswers(newAnswers);
 
     if (currentQuestionIndex < questions.length - 1) {
@@ -88,32 +137,47 @@ export default function App() {
 
   const calculateAndAdvance = (finalAnswers) => {
     // Scoring
-    let scoreA = 0; // Frontend
-    let scoreB = 0; // Backend
-    let scoreC = 0; // Fullstack
+    const scores = {
+      'Frontend': 0,
+      'Backend': 0,
+      'Data': 0,
+      'Security': 0,
+      'GameDev': 0
+    };
 
-    Object.values(finalAnswers).forEach(val => {
-      if (val === 'A') scoreA++;
-      else if (val === 'B') scoreB++;
-      else if (val === 'C') scoreC++;
+    // Calculate scores based on the 'cluster' property of the selected answer
+    Object.keys(finalAnswers).forEach(qIndex => {
+      const selectedOption = questions[qIndex].options.find(opt => opt.text === finalAnswers[qIndex]);
+      if (selectedOption && selectedOption.cluster) {
+        scores[selectedOption.cluster]++;
+      }
     });
 
-    let outcome = 'Full Stack Developer'; // Default fallback
+    // Find the winner
+    let maxScore = -1;
+    let winner = 'Frontend'; // Default
 
-    if (scoreA > scoreB && scoreA > scoreC) {
-      outcome = 'Frontend Developer';
-    } else if (scoreB > scoreA && scoreB > scoreC) {
-      outcome = 'Backend Developer';
-    } else if (scoreC > scoreA && scoreC > scoreB) {
-      outcome = 'Full Stack Developer';
-    } else {
-      // Tie breaker logic
-      if (scoreA === scoreB) outcome = 'Full Stack Developer';
-      else if (scoreA > scoreB) outcome = 'Frontend Developer';
-      else outcome = 'Full Stack Developer';
-    }
+    Object.entries(scores).forEach(([cluster, score]) => {
+      if (score > maxScore) {
+        maxScore = score;
+        winner = cluster;
+      } else if (score === maxScore) {
+        // Tie-breaker logic can be enhanced here if needed
+        // For now, prioritize: Backend > Data > Security > GameDev > Frontend
+        // (Simple precedence or leave as is)
+      }
+    });
 
-    setResult(outcome);
+    // Map internal cluster keys to Display Names
+    const clusterToDisplayName = {
+      'Frontend': 'Frontend Developer',
+      'Backend': 'Full Stack Developer', // Mapping "Application Builders" to Full Stack as requested
+      'Data': 'Data Scientist',
+      'Security': 'Cybersecurity Specialist',
+      'GameDev': 'Game Developer'
+    };
+
+    setResult(clusterToDisplayName[winner] || 'Full Stack Developer');
     setStep('analyzing');
 
     setTimeout(() => {
@@ -214,9 +278,9 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              className="w-full max-w-xl"
+              className="w-full max-w-xl md:max-w-4xl"
             >
-              <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 md:p-12 border border-white/50 relative overflow-hidden">
+              <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-6 md:p-12 border border-white/50 relative overflow-hidden">
                 {/* Enhanced Progress Stepper */}
                 <div className="mb-10 relative px-2">
                   {/* Background Line */}
@@ -290,23 +354,23 @@ export default function App() {
                       <span className="text-blue-600 font-bold uppercase tracking-wider text-sm">
                         Question {currentQuestionIndex + 1} of {questions.length}
                       </span>
-                      <h2 className="text-3xl font-bold text-slate-900 mt-2">
+                      <h2 className="text-xl md:text-3xl font-bold text-slate-900 mt-2 leading-snug">
                         {questions[currentQuestionIndex].question}
                       </h2>
                     </div>
 
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 gap-4">
-                        {questions[currentQuestionIndex].options.map((opt) => (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {questions[currentQuestionIndex].options.map((opt, idx) => (
                           <button
-                            key={opt.value}
-                            onClick={() => handleAnswer(opt.value)}
-                            className="p-5 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50/50 transition-all text-left group flex items-center gap-4 w-full shadow-sm hover:shadow-md bg-white"
+                            key={idx}
+                            onClick={() => handleAnswer(opt.text)}
+                            className="p-4 md:p-5 rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:bg-blue-50/50 transition-all text-left group flex items-center gap-3 md:gap-4 w-full shadow-sm hover:shadow-md bg-white"
                           >
-                            <div className="p-3 bg-blue-100/50 text-blue-600 rounded-xl shrink-0 group-hover:scale-110 transition-transform">
+                            <div className="p-2.5 md:p-3 bg-blue-100/50 text-blue-600 rounded-xl shrink-0 group-hover:scale-110 transition-transform">
                               {opt.icon}
                             </div>
-                            <span className="font-semibold text-lg text-slate-700 group-hover:text-slate-900 leading-tight">
+                            <span className="font-semibold text-sm md:text-lg text-slate-700 group-hover:text-slate-900 leading-snug">
                               {opt.text}
                             </span>
                           </button>
@@ -437,7 +501,7 @@ export default function App() {
                 >
                   <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
                   <span className="relative z-10 flex items-center gap-2">
-                    Get My Roadmap <Map className="w-5 h-5" />
+                    Get My Roadmap <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
                   </span>
                 </button>
               </form>
@@ -464,7 +528,14 @@ export default function App() {
                     </div>
 
                     <img
-                      src={result === 'Frontend Developer' ? '/frontend.png' : result === 'Backend Developer' ? '/backend.png' : '/fullstack.png'}
+                      src={
+                        result === 'Frontend Developer' ? '/frontend_char.png' :
+                          result === 'Full Stack Developer' ? '/fullstack_char.png' :
+                            result === 'Data Scientist' ? '/data_char.png' :
+                              result === 'Cybersecurity Specialist' ? '/security_char.png' :
+                                result === 'Game Developer' ? '/gamedev_char.png' :
+                                  '/fullstack_char.png' // Default
+                      }
                       alt={result}
                       className="w-40 h-40 md:w-72 md:h-72 object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                     />
@@ -479,16 +550,20 @@ export default function App() {
                       </span>
                       <h2 className="text-2xl md:text-4xl font-bold text-slate-900 leading-tight">
                         {result === 'Frontend Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Frontend Developer</span>.</>}
-                        {result === 'Backend Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Backend Developer</span>.</>}
                         {result === 'Full Stack Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Full Stack Developer</span>.</>}
+                        {result === 'Data Scientist' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Data Scientist</span>.</>}
+                        {result === 'Cybersecurity Specialist' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-slate-700 to-red-500">Cybersecurity Specialist</span>.</>}
+                        {result === 'Game Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-500">Game Developer</span>.</>}
                       </h2>
                     </div>
 
                     <div className="prose prose-slate text-slate-600 leading-relaxed mb-8 text-sm md:text-lg">
                       <p>
-                        {result === 'Frontend Developer' && "You care about how things look and feel. You enjoy making ideas simple, clean, and easy for people to use. You naturally think from the user’s point of view and enjoy creating smooth, visual experiences."}
-                        {result === 'Backend Developer' && "You enjoy understanding how things work behind the scenes. You like solving problems and making sure everything runs smoothly and reliably. You think logically and enjoy building strong systems others depend on."}
-                        {result === 'Full Stack Developer' && "You like seeing the full picture — how things look and how they work together. You’re comfortable balancing creativity and logic, and you enjoy building complete solutions from start to finish."}
+                        {result === 'Frontend Developer' && "You care about how things look and feel. You enjoy making ideas simple, clean, and easy for people to use."}
+                        {result === 'Full Stack Developer' && "You enjoy understanding how things work behind the scenes. You like solving problems and building strong systems."}
+                        {result === 'Data Scientist' && "You see the world in patterns and numbers. You love teaching computers to predict the future and finding truth in data."}
+                        {result === 'Cybersecurity Specialist' && "You have a protective instinct and a detective's mind. You love finding vulnerabilities before the bad guys do."}
+                        {result === 'Game Developer' && "You blend creativity with logic to build immersive worlds. You love interactive experiences and pushing boundaries."}
                       </p>
                     </div>
 
@@ -561,7 +636,7 @@ export default function App() {
                     </h3>
 
                     <p className="text-slate-600 leading-relaxed mb-6">
-                      We’ve just sent a Step-by-Step <span className="text-green-600 font-bold">{result === 'Frontend Developer' ? 'Frontend' : result === 'Backend Developer' ? 'Backend' : 'Full Stack'} Roadmap</span> to your WhatsApp.
+                      We’ve just sent a Step-by-Step <span className="text-green-600 font-bold">{result} Roadmap</span> to your WhatsApp.
                     </p>
 
                     <p className="text-sm text-slate-500 bg-slate-50 p-4 rounded-xl border border-slate-100">
