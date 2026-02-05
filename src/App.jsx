@@ -239,11 +239,11 @@ export default function App() {
     <div className="min-h-screen bg-white text-slate-800 font-sans selection:bg-blue-200 relative overflow-x-hidden">
 
       {/* Decorative Left-Side Gradient Blob */}
-      {/* Decorative Left-Side Gradient Blob - Optimized Blur */}
-      <div className="absolute top-0 left-0 w-72 h-72 md:w-[600px] md:h-[600px] bg-gradient-to-br from-sky-200/40 to-blue-200/30 md:from-sky-200/60 md:to-blue-200/40 rounded-full blur-2xl md:blur-3xl -translate-x-1/4 -translate-y-1/4 md:-translate-x-1/3 md:-translate-y-1/3 pointer-events-none z-0"></div>
+      {/* Decorative Left-Side Gradient Blob - Optimized with GPU Layer */}
+      <div className="absolute top-0 left-0 w-72 h-72 md:w-[600px] md:h-[600px] bg-gradient-to-br from-sky-200/40 to-blue-200/30 md:from-sky-200/60 md:to-blue-200/40 rounded-full blur-2xl md:blur-3xl -translate-x-1/4 -translate-y-1/4 md:-translate-x-1/3 md:-translate-y-1/3 pointer-events-none z-0 transform-gpu will-change-transform backface-hidden"></div>
 
-      {/* Decorative Right-Side Gradient Blob - Optimized Blur */}
-      <div className="absolute bottom-0 right-0 w-72 h-72 md:w-[600px] md:h-[600px] bg-gradient-to-bl from-sky-200/40 to-blue-200/30 md:from-sky-200/60 md:to-blue-200/40 rounded-full blur-2xl md:blur-3xl translate-x-1/4 translate-y-1/4 md:translate-x-1/3 md:-translate-y-1/4 pointer-events-none z-0"></div>
+      {/* Decorative Right-Side Gradient Blob - Optimized with GPU Layer */}
+      <div className="absolute bottom-0 right-0 w-72 h-72 md:w-[600px] md:h-[600px] bg-gradient-to-bl from-sky-200/40 to-blue-200/30 md:from-sky-200/60 md:to-blue-200/40 rounded-full blur-2xl md:blur-3xl translate-x-1/4 translate-y-1/4 md:translate-x-1/3 md:-translate-y-1/4 pointer-events-none z-0 transform-gpu will-change-transform backface-hidden"></div>
 
       {/* Header/Nav */}
       <nav className={`w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm border-b border-slate-100' : 'bg-transparent border-b border-transparent'}`}>
