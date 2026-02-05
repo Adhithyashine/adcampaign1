@@ -82,12 +82,12 @@ const questions = [
   // --- Reality Check (2 Questions) ---
   {
     id: 8,
-    question: "How do you feel about math and logic puzzles?",
+    question: "At the end of the day, what feels like a real achievement?",
     options: [
-      { text: "I prefer visual creativity over math", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "I like logic, but not heavy math", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "I love advanced math and statistics", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "I enjoy cracking codes and encryption", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "Building something users find beautiful & easy to use", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: " creating a complex system that runs without errors", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Uncovering a hidden insight that no one else saw", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Successfully protecting a system from an attack", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
     ]
   },
   {
@@ -109,7 +109,10 @@ export default function App() {
   const [userData, setUserData] = useState({ name: '', whatsapp: '' });
   const [showRoadmapPopup, setShowRoadmapPopup] = useState(false);
   const [result, setResult] = useState(null);
+  const [analyzingText, setAnalyzingText] = useState('Initializing AI Model...');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(12);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -119,8 +122,21 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Timer Effect
+  useEffect(() => {
+    if (step === 'assessment' && timeLeft > 0) {
+      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [timeLeft, step]);
+
+
   const startAssessment = () => {
     setStep('assessment');
+    setCurrentQuestionIndex(0);
+    setAnswers({});
+    setResult(null);
+    setTimeLeft(12);
     // smooth scroll if needed, but we are replacing the view or staying in place
   };
 
@@ -129,7 +145,10 @@ export default function App() {
     setAnswers(newAnswers);
 
     if (currentQuestionIndex < questions.length - 1) {
-      setTimeout(() => setCurrentQuestionIndex(currentQuestionIndex + 1), 300);
+      setTimeout(() => {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setTimeLeft(12); // Reset timer for next question
+      }, 300);
     } else {
       setTimeout(() => calculateAndAdvance(newAnswers), 300);
     }
@@ -179,10 +198,15 @@ export default function App() {
 
     setResult(clusterToDisplayName[winner] || 'Full Stack Developer');
     setStep('analyzing');
+    // Start directly with the first real stage
+    setAnalyzingText('Analysing your thinking style...');
+
+    setTimeout(() => setAnalyzingText('Finding suitable IT careers...'), 2200);
+    setTimeout(() => setAnalyzingText('Creating your personal roadmap...'), 4400);
 
     setTimeout(() => {
       setStep('lead-magnet');
-    }, 4000);
+    }, 6600);
   };
 
   const handleLeadSubmit = (e) => {
@@ -228,14 +252,18 @@ export default function App() {
           </div>
           <button
             onClick={startAssessment}
-            className="px-8 py-3 bg-gradient-to-r from-blue-600 to-sky-500 text-white font-bold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all text-base"
+            disabled={step !== 'hero'}
+            className={`px-8 py-3 font-bold rounded-xl shadow-lg transition-all text-base bg-gradient-to-r from-blue-600 to-sky-500 text-white ${step !== 'hero'
+              ? 'opacity-80 cursor-not-allowed'
+              : 'hover:shadow-xl hover:scale-105'
+              }`}
           >
             Get Started
           </button>
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-6 pt-32 pb-12 flex flex-col items-center justify-center min-h-screen">
+      <main className="max-w-4xl mx-auto px-4 pt-20 md:pt-32 pb-8 md:pb-12 flex flex-col items-center justify-center min-h-[75vh] md:min-h-screen">
         <AnimatePresence mode="wait">
 
           {step === 'hero' && (
@@ -244,30 +272,52 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="text-center space-y-8"
+              className="text-center space-y-3 md:space-y-8"
             >
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl font-bold text-slate-900 leading-tight pb-2">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">AI</span> ഉപയോഗിച്ച് നിങ്ങൾക്ക് പറ്റിയ <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">IT Career</span> തിരഞ്ഞെടുക്കാം, വെറും <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">2</span> മിനിറ്റിൽ...
+                <h1 className="text-[1.4rem] sm:text-2xl md:text-6xl font-extrabold text-slate-900 leading-snug tracking-tight pb-1">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">AI</span> ഉപയോഗിച്ച് നിങ്ങൾക്ക് പറ്റിയ <br />
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">IT Career</span> തിരഞ്ഞെടുക്കാം, <br />
+                  വെറും <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">2</span> മിനിറ്റിൽ...
                 </h1>
-                <p className="text-xl md:text-2xl text-slate-600 font-medium">
-                  Find your perfect IT career path using AI in just 2 minutes!
+                <p className="text-base md:text-2xl text-slate-600 font-medium leading-normal">
+                  Find your perfect IT career path <br className="md:hidden" />
+                  using AI in just 2 minutes!
                 </p>
               </div>
 
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={startAssessment}
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-sky-400 to-blue-600 text-white rounded-2xl text-xl font-semibold shadow-xl shadow-blue-200 hover:shadow-2xl hover:brightness-105 transition-all"
-              >
-                Start My Assessment
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-lg opacity-50 animate-pulse"></div>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={startAssessment}
+                  className="group relative z-10 inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-sky-400 to-blue-600 text-white rounded-2xl text-lg md:text-xl font-semibold shadow-xl shadow-blue-400/50 hover:shadow-2xl hover:brightness-105 transition-all ring-4 ring-blue-500/20 overflow-hidden"
+                >
+                  {/* Moving Shimmer Effect */}
+                  <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-2xl">
+                    <motion.div
+                      initial={{ x: '-100%' }}
+                      animate={{ x: '400%' }}
+                      transition={{
+                        repeat: Infinity,
+                        repeatType: "loop",
+                        duration: 3,
+                        ease: "linear",
+                        repeatDelay: 2
+                      }}
+                      className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]"
+                    />
+                  </div>
 
-              <div className="pt-12 flex gap-8 justify-center text-slate-400">
-                <div className="flex items-center gap-2"><Clock className="w-5 h-5" /> 2 Mins</div>
-                <div className="flex items-center gap-2"><Zap className="w-5 h-5" /> AI Powered</div>
+                  <span className="relative z-10">Start My Assessment</span>
+                  <ArrowRight className="relative z-10 w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </div>
+
+              <div className="pt-4 md:pt-12 flex gap-4 md:gap-8 justify-center text-slate-400 text-sm md:text-base">
+                <div className="flex items-center gap-1.5 md:gap-2"><Clock className="w-4 h-4 md:w-5 md:h-5" /> 2 Mins</div>
+                <div className="flex items-center gap-1.5 md:gap-2"><Zap className="w-4 h-4 md:w-5 md:h-5" /> AI Powered</div>
               </div>
             </motion.div>
           )}
@@ -359,6 +409,21 @@ export default function App() {
                       </h2>
                     </div>
 
+                    {/* Timer Progress Bar */}
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                        <motion.div
+                          className={`h-full rounded-full transition-colors duration-300 ${timeLeft < 5 ? 'bg-red-500' : timeLeft < 9 ? 'bg-amber-500' : 'bg-green-500'}`}
+                          initial={{ width: "100%" }}
+                          animate={{ width: `${(timeLeft / 12) * 100}%` }}
+                          transition={{ duration: 1, ease: "linear" }}
+                        />
+                      </div>
+                      <div className={`text-xs font-bold whitespace-nowrap ${timeLeft < 5 ? 'text-red-500' : 'text-slate-400'}`}>
+                        {timeLeft}s left
+                      </div>
+                    </div>
+
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {questions[currentQuestionIndex].options.map((opt, idx) => (
@@ -389,69 +454,97 @@ export default function App() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
-              className="w-full max-w-lg bg-white/80 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl border border-white/50 text-center relative overflow-hidden"
+              className="w-full max-w-lg bg-white/90 backdrop-blur-2xl p-12 rounded-3xl shadow-2xl border border-white/60 text-center relative overflow-hidden"
             >
-              {/* Animated Background Gradients */}
-              <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-                <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-blue-400 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+              {/* Complex Background Tech Effect */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full bg-[linear-gradient(rgba(59,130,246,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                <motion.div
+                  initial={{ y: '-100%' }}
+                  animate={{ y: '100%' }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+                  className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-transparent via-blue-400/20 to-transparent"
+                />
               </div>
 
               <div className="relative z-10 flex flex-col items-center">
-                <div className="w-24 h-24 mb-8 relative">
-                  {/* Ring Animation */}
+                <div className="w-32 h-32 mb-10 relative flex items-center justify-center">
+                  {/* Outer Pulsing Ring */}
+                  <motion.div
+                    animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute inset-0 rounded-full bg-blue-100 blur-xl"
+                  />
+
+                  {/* Rotating Dashed Rings */}
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 rounded-full border-b-2 border-r-2 border-blue-500/30"
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-0 rounded-full border border-dashed border-blue-200"
                   />
                   <motion.div
                     animate={{ rotate: -360 }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-2 rounded-full border-t-2 border-l-2 border-sky-400/40"
+                    transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-2 rounded-full border border-dotted border-indigo-300"
                   />
 
-                  {/* Central Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      className="bg-white p-4 rounded-full shadow-lg shadow-blue-100"
-                    >
-                      <Brain className="w-10 h-10 text-blue-600" />
-                    </motion.div>
-                  </div>
-
-                  {/* Floating Sparkles */}
+                  {/* Active Segment Rings */}
                   <motion.div
-                    className="absolute -top-2 -right-2 text-yellow-400"
-                    animate={{ scale: [0, 1, 0], opacity: [0, 1, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 rounded-full border-t-4 border-r-4 border-transparent border-t-blue-500 border-r-blue-500 rounded-full"
+                  />
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-4 rounded-full border-b-2 border-l-2 border-transparent border-b-sky-500 border-l-sky-500 rounded-full"
+                  />
+
+                  {/* Central Brain Icon with Pulse */}
+                  <motion.div
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 1, repeat: Infinity }}
+                    className="bg-white p-5 rounded-2xl shadow-xl shadow-blue-200/50 relative z-10"
                   >
-                    <Sparkles className="w-6 h-6 fill-current" />
+                    {analyzingText === 'Analysing your thinking style...' && <Cpu className="w-12 h-12 text-purple-600" />}
+                    {analyzingText === 'Finding suitable IT careers...' && <Database className="w-12 h-12 text-amber-500" />}
+                    {analyzingText === 'Creating your personal roadmap...' && <Map className="w-12 h-12 text-green-500" />}
+                    {analyzingText === 'Initializing AI Model...' && <Brain className="w-12 h-12 text-blue-600" />}
                   </motion.div>
                 </div>
 
                 <motion.h2
-                  className="text-2xl md:text-3xl font-bold text-slate-900 mb-3"
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  key={analyzingText} // key change triggers animation
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="text-2xl md:text-3xl font-bold text-slate-900 mb-4 h-16 flex items-center justify-center"
                 >
-                  Analyzing your profile...
+                  {analyzingText}
                 </motion.h2>
 
-                <p className="text-slate-500 font-medium">
-                  AI is finding your best career fit
+                <p className="text-slate-500 font-medium animate-pulse">
+                  AI is calibrating your personalized roadmap...
                 </p>
 
-                {/* Loading Bar */}
-                <div className="w-64 h-2 bg-slate-100 rounded-full mt-8 overflow-hidden relative">
+                {/* Advanced Loading Bar */}
+                <div className="w-full max-w-xs h-3 bg-slate-100 rounded-full mt-8 overflow-hidden relative shadow-inner">
                   <motion.div
-                    className="h-full bg-gradient-to-r from-blue-500 to-sky-400"
+                    className="h-full bg-gradient-to-r from-blue-600 via-sky-400 to-blue-600 background-animate"
                     initial={{ x: "-100%" }}
                     animate={{ x: "100%" }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ backgroundSize: '200% 100%' }}
+                  />
+                  {/* Processing blips */}
+                  <motion.div
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 0.2 }}
+                    className="absolute top-0 right-0 h-full w-2 bg-white/50 blur-[2px]"
                   />
                 </div>
+
+
               </div>
             </motion.div>
           )}
@@ -479,7 +572,7 @@ export default function App() {
                     type="text"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                    placeholder="Arun Kumar"
+                    placeholder="Enter your Name"
                     value={userData.name}
                     onChange={e => setUserData({ ...userData, name: e.target.value })}
                   />
@@ -490,7 +583,7 @@ export default function App() {
                     type="tel"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                    placeholder="+91 98765 43210"
+                    placeholder="Enter your WhatsApp Number"
                     value={userData.whatsapp}
                     onChange={e => setUserData({ ...userData, whatsapp: e.target.value })}
                   />
@@ -542,13 +635,13 @@ export default function App() {
                   </div>
 
                   {/* Right Side: Content & CTA */}
-                  <div className="md:col-span-7 p-6 md:p-8 flex flex-col justify-center text-left bg-white/40">
+                  <div className="md:col-span-7 p-4 md:p-6 flex flex-col justify-center text-left bg-white/40">
 
-                    <div className="mb-6">
-                      <span className="inline-block px-4 py-1.5 md:px-6 md:py-2 bg-blue-100 text-blue-700 text-xs md:text-sm font-bold uppercase tracking-wider mb-3 rounded-full">
+                    <div className="mb-4">
+                      <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 text-xs md:text-sm font-bold uppercase tracking-wider mb-2 rounded-full">
                         Congratulations, {userData.name}!
                       </span>
-                      <h2 className="text-2xl md:text-4xl font-bold text-slate-900 leading-tight">
+                      <h2 className="text-xl md:text-3xl font-bold text-slate-900 leading-tight">
                         {result === 'Frontend Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Frontend Developer</span>.</>}
                         {result === 'Full Stack Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Full Stack Developer</span>.</>}
                         {result === 'Data Scientist' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Data Scientist</span>.</>}
@@ -557,8 +650,8 @@ export default function App() {
                       </h2>
                     </div>
 
-                    <div className="prose prose-slate text-slate-600 leading-relaxed mb-8 text-sm md:text-lg">
-                      <p>
+                    <div className="prose prose-slate text-slate-600 leading-relaxed mb-4 text-sm md:text-base">
+                      <p className="mb-0">
                         {result === 'Frontend Developer' && "You care about how things look and feel. You enjoy making ideas simple, clean, and easy for people to use."}
                         {result === 'Full Stack Developer' && "You enjoy understanding how things work behind the scenes. You like solving problems and building strong systems."}
                         {result === 'Data Scientist' && "You see the world in patterns and numbers. You love teaching computers to predict the future and finding truth in data."}
@@ -567,24 +660,35 @@ export default function App() {
                       </p>
                     </div>
 
-                    <button
-                      onClick={() => setShowRoadmapPopup(true)}
-                      className="w-full py-3 md:py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 md:gap-3 mb-8 group"
-                    >
-                      Get My Career Roadmap on WhatsApp
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 md:w-6 md:h-6 fill-current" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
-                    </button>
+                    <div className="bg-green-50/80 border border-green-100 rounded-xl p-4 mb-5 text-center relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <span className="text-xl">🚀</span>
+                          <h3 className="text-lg font-bold text-slate-900">
+                            Your Career Blueprint is Ready!
+                          </h3>
+                        </div>
+                        <p className="text-slate-600 mb-2 text-sm leading-relaxed">
+                          We’ve just sent a Step-by-Step <span className="text-green-600 font-bold">{result} Roadmap</span> to your WhatsApp.
+                        </p>
+                        <p className="text-xs text-slate-500 font-medium bg-white/60 py-1.5 px-3 rounded-lg inline-block text-center border border-green-100/50">
+                          It covers everything from first line of code to your first <span className="font-bold text-slate-800">₹40k+ job</span>.
+                        </p>
+                      </div>
+                    </div>
 
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-slate-500 mb-3">Want to start right now?</span>
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Want to start right now?</span>
                       <a
                         href="https://learn.brototype.com/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3 md:py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-base md:text-lg shadow-xl hover:shadow-2xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 md:gap-3 group"
+                        className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
                       >
                         Start Learning for Free
-                        <ArrowRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform text-blue-300" />
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-blue-300" />
                       </a>
                       <p className="text-center text-slate-400 text-xs md:text-sm font-medium mt-3">
                         Explore the basics at your pace | Get certified for free
@@ -598,68 +702,13 @@ export default function App() {
             </motion.div>
           )}
 
-          {/* New POPUP Section */}
-          <AnimatePresence>
-            {showRoadmapPopup && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm"
-                onClick={(e) => {
-                  if (e.target === e.currentTarget) setShowRoadmapPopup(false);
-                }}
-              >
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                  animate={{ scale: 1, opacity: 1, y: 0 }}
-                  exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                  className="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full shadow-2xl relative overflow-hidden"
-                >
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setShowRoadmapPopup(false)}
-                    className="absolute top-4 right-4 p-2 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors"
-                  >
-                    <svg className="w-5 h-5 text-slate-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
 
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
-                      <span className="text-4xl">🚀</span>
-                    </div>
-
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                      Your Career Blueprint is Ready!
-                    </h3>
-
-                    <p className="text-slate-600 leading-relaxed mb-6">
-                      We’ve just sent a Step-by-Step <span className="text-green-600 font-bold">{result} Roadmap</span> to your WhatsApp.
-                    </p>
-
-                    <p className="text-sm text-slate-500 bg-slate-50 p-4 rounded-xl border border-slate-100">
-                      It covers everything from your first line of code to landing your first <span className="font-bold text-slate-800">₹40k+ job</span>.
-                    </p>
-
-                    <button
-                      onClick={() => setShowRoadmapPopup(false)}
-                      className="mt-8 w-full py-3 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition-colors"
-                    >
-                      Got it, thanks!
-                    </button>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
 
 
         </AnimatePresence>
       </main>
-      <footer className="w-full bg-white border-t border-slate-100 py-16 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+      <footer className="w-full bg-white border-t border-slate-100 py-8 md:py-16 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
 
           {/* Left: Logo */}
           <div className="flex-1 flex justify-center md:justify-start">
@@ -697,7 +746,7 @@ export default function App() {
         </div>
 
         {/* Copyright */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-12 pt-8 border-t border-slate-200 text-center text-slate-400 text-sm font-medium">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-6 md:mt-12 pt-4 md:pt-8 border-t border-slate-200 text-center text-slate-400 text-sm font-medium">
           <p>© 2026 Brototype. All rights reserved.</p>
         </div>
       </footer>
