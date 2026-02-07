@@ -10,40 +10,40 @@ const questions = [
     id: 1,
     question: "When solving a problem, what's your first instinct?",
     options: [
-      { text: "Sketch or visualize the solution", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Break it down into logical steps", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Look for patterns in data", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Check for risks or loopholes", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "Draw the solution", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Plan the steps", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Find patterns", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Check for risks", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
     ]
   },
   {
     id: 2,
     question: "Which type of project sounds most exciting?",
     options: [
-      { text: "Designing a beautiful mobile app", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Building a high-speed trading engine", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
-      { text: "Creating a realistic 3D game world", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> },
-      { text: "Training an AI to recognize faces", cluster: "Data", icon: <Brain className="w-6 h-6" /> }
+      { text: "Design a Mobile App", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Create High-Speed Apps", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
+      { text: "Make a 3D Game", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> },
+      { text: "Train an AI", cluster: "Data", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 3,
     question: "If you were building a house, what would you focus on?",
     options: [
-      { text: "The interior design and curb appeal", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "The foundation and plumbing", cluster: "Backend", icon: <Layers className="w-6 h-6" /> },
-      { text: "The security system and locks", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "Smart home automation features", cluster: "GameDev", icon: <Zap className="w-6 h-6" /> }
+      { text: "The Design & Looks", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "The Foundation", cluster: "Backend", icon: <Layers className="w-6 h-6" /> },
+      { text: "Security & Locks", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "Smart Gadgets", cluster: "GameDev", icon: <Zap className="w-6 h-6" /> }
     ]
   },
   {
     id: 4,
     question: "What annoys you most in technology?",
     options: [
-      { text: "Ugly, hard-to-use interfaces", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Slow loading times and crashes", cluster: "Backend", icon: <Clock className="w-6 h-6" /> },
-      { text: "Data inaccuracies and bad predictions", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Privacy leaks and hacked accounts", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "Ugly or Confusing Apps", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Slow Speed & Crashing", cluster: "Backend", icon: <Clock className="w-6 h-6" /> },
+      { text: "Wrong Information", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Getting Hacked", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
     ]
   },
 
@@ -52,30 +52,30 @@ const questions = [
     id: 5,
     question: "Which news headline grabs your attention?",
     options: [
-      { text: "New Design Trends for 2026", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "AI Model Solves Complex Math Problem", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
-      { text: "Major Cyber Attack Stops Bank", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "New Game Engine Released with Real-time Ray Tracing", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "Newest Design Styles", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "AI Solves Hard Problem", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
+      { text: "Bank Gets Hacked", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "New Video Game Tech", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
     ]
   },
   {
     id: 6,
     question: "You have a free weekend. What do you do?",
     options: [
-      { text: "Redesign your personal website", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Automate a boring daily task", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Analyze stock market trends", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Play and mod video games", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "Design a Website", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Create Tools to Save Time", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Predict Future Trends", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Play Video Games", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
     ]
   },
   {
     id: 7,
     question: "What's the coolest tech superpower?",
     options: [
-      { text: "Creating anything you can imagine visually", cluster: "GameDev", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "Predicting the future with accuracy", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
-      { text: "Being invisible and untraceable", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "Building systems that serve millions", cluster: "Backend", icon: <Zap className="w-6 h-6" /> }
+      { text: "Create Visual Art", cluster: "GameDev", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "Predict the Future", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
+      { text: "Be Invisible Online", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "Build Huge Systems", cluster: "Backend", icon: <Zap className="w-6 h-6" /> }
     ]
   },
 
@@ -84,20 +84,20 @@ const questions = [
     id: 8,
     question: "At the end of the day, what feels like a real achievement?",
     options: [
-      { text: "Building something users find beautiful & easy to use", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: " creating a complex system that runs without errors", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Uncovering a hidden insight that no one else saw", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Successfully protecting a system from an attack", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "Making it Beautiful", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Making it Work Perfectly", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Finding Hidden Secrets", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Stopping Hackers", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
     ]
   },
   {
     id: 9,
     question: "Which work environment sounds best?",
     options: [
-      { text: "Visual, artistic, and user-focused", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "Structured, logical, and efficient", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "High-stakes, protective, and investigative", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "Immersive, interactive, and playful", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "Creative & Visual", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "Logical & Organized", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Serious & Protective", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "Fun & Playful", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
     ]
   }
 ];
@@ -264,7 +264,7 @@ export default function App() {
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-4 pt-20 md:pt-32 pb-8 md:pb-12 flex flex-col items-center justify-center min-h-[75vh] md:min-h-screen">
+      <main className="max-w-[1600px] mx-auto px-4 pt-12 md:pt-20 pb-8 md:pb-12 flex flex-col items-center justify-center min-h-screen">
         <AnimatePresence mode="wait">
 
           {step === 'hero' && (
@@ -273,27 +273,27 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="text-center space-y-3 md:space-y-8"
+              className="text-center space-y-6 md:space-y-8"
             >
-              <div className="space-y-4">
-                <h1 className="text-[1.5rem] sm:text-2xl md:text-6xl font-extrabold text-slate-900 leading-snug tracking-tighter pb-1">
+              <div className="space-y-5">
+                <h1 className="text-[1.6rem] sm:text-2xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter pb-1">
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">AI</span> ഉപയോഗിച്ച് നിങ്ങൾക്ക് പറ്റിയ <br />
                   <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">IT Career</span> തിരഞ്ഞെടുക്കാം, <br />
                   വെറും <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">2</span> മിനിറ്റിൽ...
                 </h1>
-                <p className="text-base md:text-2xl text-slate-600 font-medium leading-normal">
+                <p className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
                   Find your perfect IT career path <br className="md:hidden" />
                   using AI in just 2 minutes!
                 </p>
               </div>
 
-              <div className="relative inline-block">
+              <div className="relative w-[95%] md:w-auto inline-block mt-6 md:mt-0">
                 <div className="absolute inset-0 bg-blue-500 rounded-2xl blur-lg opacity-50 animate-pulse"></div>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={startAssessment}
-                  className="group relative z-10 inline-flex items-center gap-2 md:gap-3 px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-sky-400 to-blue-600 text-white rounded-2xl text-lg md:text-xl font-semibold shadow-xl shadow-blue-400/50 hover:shadow-2xl hover:brightness-105 transition-all ring-4 ring-blue-500/20 overflow-hidden"
+                  className="group relative z-10 w-full md:w-auto justify-center inline-flex items-center gap-2 md:gap-3 px-4 py-3.5 md:px-8 md:py-4 bg-gradient-to-r from-sky-400 to-blue-600 text-white rounded-2xl text-lg md:text-xl font-bold shadow-xl shadow-blue-400/50 hover:shadow-2xl hover:brightness-105 transition-all ring-4 ring-blue-500/20 overflow-hidden whitespace-nowrap"
                 >
                   {/* Moving Shimmer Effect */}
                   <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-2xl">
@@ -607,14 +607,14 @@ export default function App() {
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="w-full max-w-5xl px-4 md:px-6"
+              className="w-full px-4 md:px-0 md:max-w-[85%] lg:max-w-[80%] xl:max-w-[75%]"
             >
               <div className="bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-2xl border border-white/50 overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-12 md:min-h-[500px]">
 
                   {/* Left Side: Visuals & Headline */}
                   {/* Left Side: Visuals */}
-                  <div className="md:col-span-5 bg-gradient-to-br from-blue-50/50 to-indigo-50/20 p-6 md:p-8 flex flex-col items-center justify-center text-center relative border-b md:border-b-0 md:border-r border-white/60">
+                  <div className="md:col-span-5 bg-gradient-to-br from-blue-50/50 to-indigo-50/20 p-5 md:p-8 flex flex-col items-center justify-center text-center relative border-b md:border-b-0 md:border-r border-white/60">
                     {/* Decorative blobs */}
                     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                       <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
@@ -631,7 +631,7 @@ export default function App() {
                                   '/fullstack_char.png' // Default
                       }
                       alt={result}
-                      className="w-40 h-40 md:w-72 md:h-72 object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                      className="w-32 h-32 md:w-72 md:h-72 object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
                     />
                   </div>
 
@@ -661,39 +661,45 @@ export default function App() {
                       </p>
                     </div>
 
-                    <div className="bg-green-50/80 border border-green-100 rounded-xl p-4 mb-5 text-center relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-16 h-16 bg-green-100 rounded-full blur-xl -translate-y-1/2 translate-x-1/2 opacity-50"></div>
+                    <div className="bg-green-50/80 border border-green-100 rounded-2xl p-6 md:p-8 mb-6 text-center relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-60"></div>
 
-                      <div className="relative z-10">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <span className="text-xl">🚀</span>
-                          <h3 className="text-lg font-bold text-slate-900">
+                      <div className="relative z-10 flex flex-col items-center">
+                        <div className="inline-flex items-center justify-center gap-2 mb-3 px-3 py-1">
+
+                          <h3 className="text-lg md:text-xl font-bold text-slate-900">
                             Your Career Blueprint is Ready!
                           </h3>
                         </div>
-                        <p className="text-slate-600 mb-2 text-sm leading-relaxed">
-                          We’ve just sent a Step-by-Step <span className="text-green-600 font-bold">{result} Roadmap</span> to your WhatsApp.
+
+                        <p className="text-slate-600 mb-4 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
+                          We’ve just sent a Step-by-Step <span className="text-green-600 font-bold whitespace-nowrap">{result} Roadmap</span> to your WhatsApp.
                         </p>
-                        <p className="text-xs text-slate-500 font-medium bg-white/60 py-1.5 px-3 rounded-lg inline-block text-center border border-green-100/50">
-                          It covers everything from first line of code to your first <span className="font-bold text-slate-800">₹40k+ job</span>.
-                        </p>
+
+                        <div className="bg-white/80 py-2 px-4 rounded-xl border border-green-100 shadow-sm inline-block">
+                          <p className="text-xs md:text-sm text-slate-600 font-medium">
+                            It covers everything from your <span className="font-semibold text-slate-800">first line of code</span> to your <span className="font-bold text-slate-800">first ₹40k+ job</span>.
+                          </p>
+                        </div>
                       </div>
                     </div>
 
                     <div className="flex flex-col">
                       <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Want to start right now?</span>
                       <a
-                        href="https://learn.brototype.com/"
+                        href="https://www.youtube.com/@BrototypeMalayalam"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
                       >
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path fill="#FF0000" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816z" />
+                          <path fill="#FFFFFF" d="M9.615 8.816l8 3.993-8 4.007z" />
+                        </svg>
                         Start Learning for Free
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-blue-300" />
                       </a>
-                      <p className="text-center text-slate-400 text-xs md:text-sm font-medium mt-3">
-                        Explore the basics at your pace | Get certified for free
-                      </p>
+
                     </div>
 
                   </div>
@@ -720,8 +726,11 @@ export default function App() {
           <div className="flex-[2] flex flex-col items-center gap-3 text-slate-400 text-base font-medium text-center">
             <div className="flex flex-col md:flex-row gap-2 md:gap-8 items-center">
               <a href="https://learningclub.brototype.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:bg-gradient-to-r hover:from-blue-600 hover:to-sky-500 hover:bg-clip-text hover:text-transparent transition-all duration-300">Privacy Policy</a>
-              <span className="hidden md:inline">|</span>
+              <span className="hidden md:inline text-slate-300">|</span>
               <a href="tel:+917034395811" className="hover:bg-gradient-to-r hover:from-blue-600 hover:to-sky-500 hover:bg-clip-text hover:text-transparent transition-all duration-300">For any queries: +91 70343 95811</a>
+            </div>
+            <div className="text-sm mt-6 pt-4 border-t border-slate-50 w-full max-w-xs md:max-w-md">
+              © {new Date().getFullYear()} Brototype. All rights reserved.
             </div>
           </div>
 
@@ -729,7 +738,7 @@ export default function App() {
           <div className="flex-1 flex justify-center md:justify-end gap-8 text-slate-400">
             <a href="https://www.instagram.com/brototype.malayalam/" target="_blank" rel="noopener noreferrer" className="hover:text-[#E4405F] hover:scale-110 transition-all">
               <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5a4.25 4.25 0 004.25 4.25h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM18 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </a>
             <a href="https://www.youtube.com/@BrototypeMalayalam" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF0000] hover:scale-110 transition-all">
@@ -743,14 +752,8 @@ export default function App() {
               </svg>
             </a>
           </div>
-
-        </div>
-
-        {/* Copyright */}
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mt-6 md:mt-12 pt-4 md:pt-8 border-t border-slate-200 text-center text-slate-400 text-sm font-medium">
-          <p>© 2026 Brototype. All rights reserved.</p>
         </div>
       </footer>
-    </div >
+    </div>
   );
 }
