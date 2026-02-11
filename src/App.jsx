@@ -638,66 +638,89 @@ export default function App() {
                   {/* Right Side: Content & CTA */}
                   <div className="md:col-span-7 p-4 md:p-6 flex flex-col justify-center text-left bg-white/40">
 
-                    <div className="mb-4">
-                      <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 text-xs md:text-sm font-bold uppercase tracking-wider mb-2 rounded-full">
-                        Congratulations, {userData.name}!
+                    <div className="mb-6">
+                      <span className="inline-block px-3 py-1 md:px-4 md:py-1.5 bg-blue-100 text-blue-700 text-xs md:text-sm font-bold uppercase tracking-wider mb-3 rounded-full">
+                        Way to go, {userData.name}!
                       </span>
-                      <h2 className="text-xl md:text-3xl font-bold text-slate-900 leading-tight">
-                        {result === 'Frontend Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Frontend Developer</span>.</>}
-                        {result === 'Full Stack Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Full Stack Developer</span>.</>}
-                        {result === 'Data Scientist' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Data Scientist</span>.</>}
-                        {result === 'Cybersecurity Specialist' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-slate-700 to-red-500">Cybersecurity Specialist</span>.</>}
-                        {result === 'Game Developer' && <>You’re built to be a <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-500">Game Developer</span>.</>}
+                      <h2 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight mb-4">
+                        {result === 'Frontend Developer' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Frontend Developer</span>.</>}
+                        {result === 'Full Stack Developer' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Full Stack Developer</span>.</>}
+                        {result === 'Data Scientist' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Data Scientist</span>.</>}
+                        {result === 'Cybersecurity Specialist' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-slate-700 to-red-500">Cybersecurity Specialist</span>.</>}
+                        {result === 'Game Developer' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-500">Game Developer</span>.</>}
                       </h2>
-                    </div>
 
-                    <div className="prose prose-slate text-slate-600 leading-relaxed mb-4 text-sm md:text-base">
-                      <p className="mb-0">
-                        {result === 'Frontend Developer' && "You care about how things look and feel. You enjoy making ideas simple, clean, and easy for people to use."}
-                        {result === 'Full Stack Developer' && "You enjoy understanding how things work behind the scenes. You like solving problems and building strong systems."}
-                        {result === 'Data Scientist' && "You see the world in patterns and numbers. You love teaching computers to predict the future and finding truth in data."}
-                        {result === 'Cybersecurity Specialist' && "You have a protective instinct and a detective's mind. You love finding vulnerabilities before the bad guys do."}
-                        {result === 'Game Developer' && "You blend creativity with logic to build immersive worlds. You love interactive experiences and pushing boundaries."}
+                      {/* Short Body Text */}
+                      <p className="text-slate-600 text-lg md:text-xl font-medium mb-6">
+                        {result === 'Frontend Developer' && "Build beautiful interfaces that people love."}
+                        {result === 'Full Stack Developer' && "Power the systems that change the world."}
+                        {result === 'Data Scientist' && "Discover the truth hidden in numbers."}
+                        {result === 'Cybersecurity Specialist' && "Protect the digital world from threats."}
+                        {result === 'Game Developer' && "Create immersive worlds that players love."}
                       </p>
-                    </div>
 
-                    <div className="bg-green-50/80 border border-green-100 rounded-2xl p-6 md:p-8 mb-6 text-center relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-20 h-20 bg-green-100 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 opacity-60"></div>
-
-                      <div className="relative z-10 flex flex-col items-center">
-                        <div className="inline-flex items-center justify-center gap-2 mb-3 px-3 py-1">
-
-                          <h3 className="text-lg md:text-xl font-bold text-slate-900">
-                            Your Career Blueprint is Ready!
-                          </h3>
-                        </div>
-
-                        <p className="text-slate-600 mb-4 text-base md:text-lg leading-relaxed max-w-lg mx-auto">
-                          We’ve just sent a Step-by-Step <span className="text-green-600 font-bold whitespace-nowrap">{result} Roadmap</span> to your WhatsApp.
-                        </p>
-
-                        <div className="bg-white/80 py-2 px-4 rounded-xl border border-green-100 shadow-sm inline-block">
-                          <p className="text-xs md:text-sm text-slate-600 font-medium">
-                            It covers everything from your <span className="font-semibold text-slate-800">first line of code</span> to your <span className="font-bold text-slate-800">first ₹40k+ job</span>.
-                          </p>
-                        </div>
+                      {/* Value Chips */}
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {result === 'Frontend Developer' && <>
+                          <span className="px-3 py-1.5 bg-pink-100 text-pink-700 rounded-lg text-sm font-bold">🎨 Design Eye</span>
+                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">✨ Detail Oriented</span>
+                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">💡 Creative</span>
+                        </>}
+                        {result === 'Full Stack Developer' && <>
+                          <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold">⚙️ System Architect</span>
+                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">🧠 Logical Thinker</span>
+                          <span className="px-3 py-1.5 bg-green-100 text-green-700 rounded-lg text-sm font-bold">🔧 Problem Solver</span>
+                        </>}
+                        {result === 'Data Scientist' && <>
+                          <span className="px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-bold">📊 Pattern Hunter</span>
+                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">🔮 Predictor</span>
+                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">📈 Analytical</span>
+                        </>}
+                        {result === 'Cybersecurity Specialist' && <>
+                          <span className="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-sm font-bold">🛡️ Guardian</span>
+                          <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold">🕵️ Detective</span>
+                          <span className="px-3 py-1.5 bg-orange-100 text-orange-700 rounded-lg text-sm font-bold">🔒 Protector</span>
+                        </>}
+                        {result === 'Game Developer' && <>
+                          <span className="px-3 py-1.5 bg-orange-100 text-orange-700 rounded-lg text-sm font-bold">🎮 World Builder</span>
+                          <span className="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-bold">📖 Storyteller</span>
+                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">🎲 Interactive</span>
+                        </>}
                       </div>
                     </div>
 
+                    {/* Roadmap Box */}
+                    <div className="bg-green-50 border border-green-200 rounded-2xl p-4 md:p-5 mb-4 md:mb-6 flex items-center gap-3 md:gap-4 shadow-sm">
+                      <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-lg md:text-2xl shadow-sm shrink-0">
+                        📱
+                      </div>
+                      <div>
+                        <h3 className="text-base md:text-lg font-bold text-slate-900 mb-0.5">Check your WhatsApp!</h3>
+                        <p className="text-slate-600 text-xs md:text-sm font-medium">Your step-by-step roadmap to a ₹40k+ job is waiting.</p>
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
                     <div className="flex flex-col">
-                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Want to start right now?</span>
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Start Learning Now</span>
                       <a
                         href="https://www.youtube.com/@BrototypeMalayalam"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold text-base shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group"
+                        className="w-full py-3.5 md:py-4 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white rounded-xl font-bold text-sm sm:text-base md:text-lg shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 md:gap-3 group px-2"
                       >
-                        <svg className="w-6 h-6" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-6 h-6 md:w-7 md:h-7 shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path fill="#FF0000" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816z" />
                           <path fill="#FFFFFF" d="M9.615 8.816l8 3.993-8 4.007z" />
                         </svg>
-                        Start Learning for Free
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform text-blue-300" />
+                        <span className="truncate">Start Your First Lesson (Free)</span>
+                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform text-white/80 shrink-0" />
                       </a>
 
                     </div>
@@ -754,6 +777,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }
