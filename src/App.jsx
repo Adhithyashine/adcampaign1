@@ -1,103 +1,98 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Check, Code, Layout, Database, Layers, Clock, Zap, Send, Instagram, Youtube, Linkedin, Map, Brain, Sparkles, Cpu } from 'lucide-react';
+import { ArrowRight, Check, Code, Layout, Database, Layers, Clock, Zap, Send, Instagram, Youtube, Linkedin, Map, Brain, Sparkles, Cpu, AppWindow } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const questions = [
-  // --- Thinking Style (4 Questions) ---
   {
     id: 1,
-    question: "When solving a problem, what's your first instinct?",
+    question: "Using Instagram 📸 or other apps, what do you notice first?",
     options: [
-      { text: "Draw the solution", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Plan the steps", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Find patterns", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Check for risks", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "The Looks & Design 🎨", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "Smooth Features ⚡", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
+      { text: "Account Safety 🔒", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "Fun Features / AI 🤖", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 2,
-    question: "Which type of project sounds most exciting?",
+    question: "Free time? What sounds fun to learn? ⏳",
     options: [
-      { text: "Design a Mobile App", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Create High-Speed Apps", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
-      { text: "Make a 3D Game", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> },
-      { text: "Train an AI", cluster: "Data", icon: <Brain className="w-6 h-6" /> }
+      { text: "Designing Posts 🖌️", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Building Apps 📱", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Stopping Scams 🚫", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "AI or Games 🎮", cluster: "Data|GameDev", icon: <Cpu className="w-6 h-6" /> }
     ]
   },
   {
     id: 3,
-    question: "If you were building a house, what would you focus on?",
+    question: "What tech videos do you watch? 📺",
     options: [
-      { text: "The Design & Looks", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "The Foundation", cluster: "Backend", icon: <Layers className="w-6 h-6" /> },
-      { text: "Security & Locks", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "Smart Gadgets", cluster: "GameDev", icon: <Zap className="w-6 h-6" /> }
+      { text: "Design / Editing 🎬", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "How Apps Work ⚙️", cluster: "Backend", icon: <Youtube className="w-6 h-6" /> },
+      { text: "Hacking / Scams 🕵️", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "Gaming / AI 🤖", cluster: "Data|GameDev", icon: <Cpu className="w-6 h-6" /> }
     ]
   },
   {
     id: 4,
-    question: "What annoys you most in technology?",
+    question: "Building a house? You'd handle: 🏠",
     options: [
-      { text: "Ugly or Confusing Apps", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Slow Speed & Crashing", cluster: "Backend", icon: <Clock className="w-6 h-6" /> },
-      { text: "Wrong Information", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Getting Hacked", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "Interior Design 🛋️", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Wiring & Structure 🏗️", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
+      { text: "Security & Locks 🔐", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "Smart Tech 💡", cluster: "Data|GameDev", icon: <Sparkles className="w-6 h-6" /> }
     ]
   },
-
-  // --- Interest Signals (3 Questions) ---
   {
     id: 5,
-    question: "Which news headline grabs your attention?",
+    question: "Best compliment for you? 💬",
     options: [
-      { text: "Newest Design Styles", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "AI Solves Hard Problem", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
-      { text: "Bank Gets Hacked", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "New Video Game Tech", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "“Great Design!” 🎨", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "“It Works Perfectly!” ✅", cluster: "Backend", icon: <Check className="w-6 h-6" /> },
+      { text: "“It’s Secure!” 🛡️", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "“So Smart / Fun!” 🤩", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 6,
-    question: "You have a free weekend. What do you do?",
+    question: "In your friend group, you are: 👥",
     options: [
-      { text: "Design a Website", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Create Tools to Save Time", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Predict Future Trends", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Play Video Games", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "The Creative One 🎨", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "The Problem Solver 🧠", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "The Protector 🛡️", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "The Curious One 🔍", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 7,
-    question: "What's the coolest tech superpower?",
+    question: "Which topic isn't boring? 📚",
     options: [
-      { text: "Create Visual Art", cluster: "GameDev", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "Predict the Future", cluster: "Data", icon: <Brain className="w-6 h-6" /> },
-      { text: "Be Invisible Online", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "Build Huge Systems", cluster: "Backend", icon: <Zap className="w-6 h-6" /> }
+      { text: "Colors & Visuals 🌈", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "How Systems Run ⚙️", cluster: "Backend", icon: <Layers className="w-6 h-6" /> },
+      { text: "Safety & Privacy 🔐", cluster: "Security", icon: <Check className="w-6 h-6" /> },
+      { text: "Patterns / Games 🎲", cluster: "Data|GameDev", icon: <Database className="w-6 h-6" /> }
     ]
   },
-
-  // --- Reality Check (2 Questions) ---
   {
     id: 8,
-    question: "At the end of the day, what feels like a real achievement?",
+    question: "On a laptop, you'd enjoy: 💻",
     options: [
-      { text: "Making it Beautiful", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Making it Work Perfectly", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Finding Hidden Secrets", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Stopping Hackers", cluster: "Security", icon: <Layers className="w-6 h-6" /> }
+      { text: "Making it Beautiful ✨", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Making it Work 🛠️", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
+      { text: "Making it Safe 🔒", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "Making it Smart 🤖", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 9,
-    question: "Which work environment sounds best?",
+    question: "Dream Job Activity? 💼",
     options: [
-      { text: "Creative & Visual", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "Logical & Organized", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Serious & Protective", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "Fun & Playful", cluster: "GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "Designing Websites 🌐", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
+      { text: "Building Apps 🚀", cluster: "Backend", icon: <AppWindow className="w-6 h-6" /> },
+      { text: "Stopping Hackers 🕵️", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
+      { text: "Creating AI / Games 🎮", cluster: "Data|GameDev", icon: <Cpu className="w-6 h-6" /> }
     ]
   }
 ];
@@ -168,7 +163,12 @@ export default function App() {
     Object.keys(finalAnswers).forEach(qIndex => {
       const selectedOption = questions[qIndex].options.find(opt => opt.text === finalAnswers[qIndex]);
       if (selectedOption && selectedOption.cluster) {
-        scores[selectedOption.cluster]++;
+        if (selectedOption.cluster === 'Data|GameDev') {
+          scores['Data']++;
+          scores['GameDev']++;
+        } else {
+          scores[selectedOption.cluster]++;
+        }
       }
     });
 
