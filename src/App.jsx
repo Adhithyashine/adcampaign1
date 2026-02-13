@@ -1,98 +1,98 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Check, Code, Layout, Database, Layers, Clock, Zap, Send, Instagram, Youtube, Linkedin, Map, Brain, Sparkles, Cpu, AppWindow } from 'lucide-react';
+import { ArrowRight, Check, Code, Layout, Database, Layers, Clock, Zap, Send, Instagram, Youtube, Linkedin, Map, Brain, Sparkles, Cpu, AppWindow, Smartphone, Globe, Gamepad2, Shield } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const questions = [
   {
     id: 1,
-    question: "Using Instagram 📸 or other apps, what do you notice first?",
+    question: "If you build your dream house, which part would you design yourself? 🏠",
     options: [
-      { text: "The Looks & Design 🎨", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "Smooth Features ⚡", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
-      { text: "Account Safety 🔒", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "Fun Features / AI 🤖", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
+      { text: "Smart Lights & Voice Control 🗣️", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "Beautiful Design & Colors 🎨", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "Strong Gates & CCTV 🔐", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "A Big Gaming Room 🎮", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
     ]
   },
   {
     id: 2,
-    question: "Free time? What sounds fun to learn? ⏳",
+    question: "If you could invent a new tech product, what would it be? 💡",
     options: [
-      { text: "Designing Posts 🖌️", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Building Apps 📱", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Stopping Scams 🚫", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "AI or Games 🎮", cluster: "Data|GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "A Super App for everything 📱", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "A Website that connects the world 🌐", cluster: "Web", icon: <Globe className="w-6 h-6" /> },
+      { text: "A Hyper-Realistic Video Game 🎲", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> },
+      { text: "A Tool that predicts the future 📊", cluster: "Data", icon: <Database className="w-6 h-6" /> }
     ]
   },
   {
     id: 3,
-    question: "What tech videos do you watch? 📺",
+    question: "You are a Detective. How would you choose to catch the thief? 🕵️‍♂️",
     options: [
-      { text: "Design / Editing 🎬", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "How Apps Work ⚙️", cluster: "Backend", icon: <Youtube className="w-6 h-6" /> },
-      { text: "Hacking / Scams 🕵️", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "Gaming / AI 🤖", cluster: "Data|GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "Analyze hidden clues & data 🔎", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Use AI to predict his path 🧠", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "Hack into the security cameras 📹", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "Track his phone signal 📍", cluster: "Mobile", icon: <Map className="w-6 h-6" /> }
     ]
   },
   {
     id: 4,
-    question: "Building a house? You'd handle: 🏠",
+    question: "If you have free time, what sounds fun to create? 🚀",
     options: [
-      { text: "Interior Design 🛋️", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Wiring & Structure 🏗️", cluster: "Backend", icon: <Zap className="w-6 h-6" /> },
-      { text: "Security & Locks 🔐", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "Smart Tech 💡", cluster: "Data|GameDev", icon: <Sparkles className="w-6 h-6" /> }
+      { text: "A Robot that talks to you 🤖", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "Your own unique Mobile App 📱", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "A Stylish Personal Website 💻", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "Your own Adventure Game 👾", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
     ]
   },
   {
     id: 5,
-    question: "Best compliment for you? 💬",
+    question: "Which tech problem would you love to FIX for everyone? 🛠️",
     options: [
-      { text: "“Great Design!” 🎨", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "“It Works Perfectly!” ✅", cluster: "Backend", icon: <Check className="w-6 h-6" /> },
-      { text: "“It’s Secure!” 🛡️", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "“So Smart / Fun!” 🤩", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
+      { text: "Apps crashing or working slowly 📵", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "Websites looking ugly or broken 🚫", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "Hackers stealing people's money 🔓", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "Fake News & Wrong Information 📰", cluster: "Data", icon: <Database className="w-6 h-6" /> }
     ]
   },
   {
     id: 6,
-    question: "In your friend group, you are: 👥",
+    question: "Pick a Superpower to help you work! 🦸",
     options: [
-      { text: "The Creative One 🎨", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "The Problem Solver 🧠", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "The Protector 🛡️", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "The Curious One 🔍", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
+      { text: "Super Intelligence (AI Brain) 🧠", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "Future Vision (Predict Trends) 🔮", cluster: "Data", icon: <Sparkles className="w-6 h-6" /> },
+      { text: "Invisibility (Unseen Guardian) 👻", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "World Builder (Create Realities) 🕹️", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
     ]
   },
   {
     id: 7,
-    question: "Which topic isn't boring? 📚",
+    question: "What headline would you want to write about yourself? 📰",
     options: [
-      { text: "Colors & Visuals 🌈", cluster: "Frontend", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "How Systems Run ⚙️", cluster: "Backend", icon: <Layers className="w-6 h-6" /> },
-      { text: "Safety & Privacy 🔐", cluster: "Security", icon: <Check className="w-6 h-6" /> },
-      { text: "Patterns / Games 🎲", cluster: "Data|GameDev", icon: <Database className="w-6 h-6" /> }
+      { text: "“Created the World's Best App” 📲", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "“Built an AI better than Humans” 🤖", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "“Stopped a Global Cyber Attack” 👮", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "“Designed the Future of the Web” 🌐", cluster: "Web", icon: <Globe className="w-6 h-6" /> }
     ]
   },
   {
     id: 8,
-    question: "On a laptop, you'd enjoy: 💻",
+    question: "If you get a super fast laptop, what will you use it for? 💻",
     options: [
-      { text: "Making it Beautiful ✨", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Making it Work 🛠️", cluster: "Backend", icon: <Code className="w-6 h-6" /> },
-      { text: "Making it Safe 🔒", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "Making it Smart 🤖", cluster: "Data|GameDev", icon: <Brain className="w-6 h-6" /> }
+      { text: "Solving complex math puzzles 🔢", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Developing high-end games 🎮", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> },
+      { text: "Designing amazing websites 🎨", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "Building powerful apps 🛠️", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> }
     ]
   },
   {
     id: 9,
-    question: "Dream Job Activity? 💼",
+    question: "Which category are you? 🎓",
     options: [
-      { text: "Designing Websites 🌐", cluster: "Frontend", icon: <Layout className="w-6 h-6" /> },
-      { text: "Building Apps 🚀", cluster: "Backend", icon: <AppWindow className="w-6 h-6" /> },
-      { text: "Stopping Hackers 🕵️", cluster: "Security", icon: <Layers className="w-6 h-6" /> },
-      { text: "Creating AI / Games 🎮", cluster: "Data|GameDev", icon: <Cpu className="w-6 h-6" /> }
+      { text: "College Student 📚", cluster: null, icon: <Layout className="w-6 h-6" /> },
+      { text: "Graduate 🎓", cluster: null, icon: <Check className="w-6 h-6" /> },
+      { text: "Working Professional 💼", cluster: null, icon: <AppWindow className="w-6 h-6" /> },
+      { text: "Other 🌍", cluster: null, icon: <Sparkles className="w-6 h-6" /> }
     ]
   }
 ];
@@ -152,62 +152,47 @@ export default function App() {
   const calculateAndAdvance = (finalAnswers) => {
     // Scoring
     const scores = {
-      'Frontend': 0,
-      'Backend': 0,
+      'AI': 0,
       'Data': 0,
       'Security': 0,
-      'GameDev': 0
+      'Mobile': 0,
+      'Web': 0,
+      'Game': 0
     };
 
     // Calculate scores based on the 'cluster' property of the selected answer
     Object.keys(finalAnswers).forEach(qIndex => {
       const selectedOption = questions[qIndex].options.find(opt => opt.text === finalAnswers[qIndex]);
       if (selectedOption && selectedOption.cluster) {
-        if (selectedOption.cluster === 'Data|GameDev') {
-          scores['Data']++;
-          scores['GameDev']++;
-        } else {
-          scores[selectedOption.cluster]++;
-        }
+        scores[selectedOption.cluster]++;
       }
     });
 
     // Find the winner
     let maxScore = -1;
-    let winner = 'Frontend'; // Default
+    let winner = 'Web'; // Default
 
     Object.entries(scores).forEach(([cluster, score]) => {
       if (score > maxScore) {
         maxScore = score;
         winner = cluster;
-      } else if (score === maxScore) {
-        // Tie-breaker logic can be enhanced here if needed
-        // For now, prioritize: Backend > Data > Security > GameDev > Frontend
-        // (Simple precedence or leave as is)
       }
     });
 
-    // Map internal cluster keys to Display Names
-    const clusterToDisplayName = {
-      'Frontend': 'Frontend Developer',
-      'Backend': 'Full Stack Developer', // Mapping "Application Builders" to Full Stack as requested
-      'Data': 'Data Scientist',
-      'Security': 'Cybersecurity Specialist',
-      'GameDev': 'Game Developer'
+    // Map cluster to Title
+    const resultTitles = {
+      'AI': 'Artificial Intelligence & ML',
+      'Data': 'Data Science',
+      'Security': 'Cyber Security',
+      'Mobile': 'Mobile Development',
+      'Web': 'Web Development',
+      'Game': 'Game Development'
     };
 
-    setResult(clusterToDisplayName[winner] || 'Full Stack Developer');
-    setStep('analyzing');
-    // Start directly with the first real stage
-    setAnalyzingText('Analysing your thinking style...');
-
-    setTimeout(() => setAnalyzingText('Finding suitable IT careers...'), 2200);
-    setTimeout(() => setAnalyzingText('Creating your personal roadmap...'), 4400);
-
-    setTimeout(() => {
-      setStep('lead-magnet');
-    }, 6600);
+    setResult(resultTitles[winner] || 'Web Development');
+    setStep('lead-magnet');
   };
+
 
   const handleLeadSubmit = (e) => {
     e.preventDefault();
@@ -623,12 +608,13 @@ export default function App() {
 
                     <img
                       src={
-                        result === 'Frontend Developer' ? '/frontend_char.png' :
-                          result === 'Full Stack Developer' ? '/fullstack_char.png' :
-                            result === 'Data Scientist' ? '/data_char.png' :
-                              result === 'Cybersecurity Specialist' ? '/security_char.png' :
-                                result === 'Game Developer' ? '/gamedev_char.png' :
-                                  '/fullstack_char.png' // Default
+                        result === 'Web Development' ? '/frontend_char.png' :
+                          result === 'Mobile Development' ? '/fullstack_char.png' :
+                            result === 'Data Science' ? '/data_char.png' :
+                              result === 'Cyber Security' ? '/security_char.png' :
+                                result === 'Game Development' ? '/gamedev_char.png' :
+                                  result === 'Artificial Intelligence & ML' ? '/data_char.png' : // Reuse Data char for AI
+                                    '/fullstack_char.png' // Default
                       }
                       alt={result}
                       className="w-32 h-32 md:w-72 md:h-72 object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
@@ -643,48 +629,55 @@ export default function App() {
                         Way to go, {userData.name}!
                       </span>
                       <h2 className="text-2xl md:text-4xl font-black text-slate-900 leading-tight mb-4">
-                        {result === 'Frontend Developer' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Frontend Developer</span>.</>}
-                        {result === 'Full Stack Developer' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Full Stack Developer</span>.</>}
-                        {result === 'Data Scientist' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">Data Scientist</span>.</>}
-                        {result === 'Cybersecurity Specialist' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-slate-700 to-red-500">Cybersecurity Specialist</span>.</>}
-                        {result === 'Game Developer' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-500">Game Developer</span>.</>}
+                        {result === 'Web Development' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-sky-500">Web Developer</span>.</>}
+                        {result === 'Mobile Development' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-500">Mobile Developer</span>.</>}
+                        {result === 'Artificial Intelligence & ML' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-indigo-500">AI Specialist</span>.</>}
+                        {result === 'Data Science' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-blue-500">Data Scientist</span>.</>}
+                        {result === 'Cyber Security' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-orange-500">Cyber Security Expert</span>.</>}
+                        {result === 'Game Development' && <>You're a natural <span className="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-500">Game Developer</span>.</>}
                       </h2>
 
                       {/* Short Body Text */}
                       <p className="text-slate-600 text-lg md:text-xl font-medium mb-6">
-                        {result === 'Frontend Developer' && "Build beautiful interfaces that people love."}
-                        {result === 'Full Stack Developer' && "Power the systems that change the world."}
-                        {result === 'Data Scientist' && "Discover the truth hidden in numbers."}
-                        {result === 'Cybersecurity Specialist' && "Protect the digital world from threats."}
-                        {result === 'Game Developer' && "Create immersive worlds that players love."}
+                        {result === 'Web Development' && "Build beautiful, interactive websites and apps."}
+                        {result === 'Mobile Development' && "Create the apps that people use every day."}
+                        {result === 'Artificial Intelligence & ML' && "Teach computers to think, learn, and predict."}
+                        {result === 'Data Science' && "Uncover hidden truths and patterns in big data."}
+                        {result === 'Cyber Security' && "Protect digital systems from hackers and threats."}
+                        {result === 'Game Development' && "Design immersive worlds and fun experiences."}
                       </p>
 
                       {/* Value Chips */}
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {result === 'Frontend Developer' && <>
-                          <span className="px-3 py-1.5 bg-pink-100 text-pink-700 rounded-lg text-sm font-bold">🎨 Design Eye</span>
-                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">✨ Detail Oriented</span>
-                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">💡 Creative</span>
+                        {result === 'Web Development' && <>
+                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">🎨 Creative</span>
+                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">🖌️ Visual</span>
+                          <span className="px-3 py-1.5 bg-pink-100 text-pink-700 rounded-lg text-sm font-bold">🌐 Internet</span>
                         </>}
-                        {result === 'Full Stack Developer' && <>
-                          <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold">⚙️ System Architect</span>
-                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">🧠 Logical Thinker</span>
-                          <span className="px-3 py-1.5 bg-green-100 text-green-700 rounded-lg text-sm font-bold">🔧 Problem Solver</span>
+                        {result === 'Mobile Development' && <>
+                          <span className="px-3 py-1.5 bg-green-100 text-green-700 rounded-lg text-sm font-bold">📱 Apps</span>
+                          <span className="px-3 py-1.5 bg-teal-100 text-teal-700 rounded-lg text-sm font-bold">👆 Touch</span>
+                          <span className="px-3 py-1.5 bg-orange-100 text-orange-700 rounded-lg text-sm font-bold">🚀 Portable</span>
                         </>}
-                        {result === 'Data Scientist' && <>
-                          <span className="px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-bold">📊 Pattern Hunter</span>
-                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">🔮 Predictor</span>
-                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">📈 Analytical</span>
+                        {result === 'AI & ML' || result === 'Artificial Intelligence & ML' && <>
+                          <span className="px-3 py-1.5 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-bold">🧠 Smart Systems</span>
+                          <span className="px-3 py-1.5 bg-violet-100 text-violet-700 rounded-lg text-sm font-bold">🤖 Automation</span>
+                          <span className="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-sm font-bold">🔮 Future</span>
                         </>}
-                        {result === 'Cybersecurity Specialist' && <>
-                          <span className="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-sm font-bold">🛡️ Guardian</span>
-                          <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold">🕵️ Detective</span>
-                          <span className="px-3 py-1.5 bg-orange-100 text-orange-700 rounded-lg text-sm font-bold">🔒 Protector</span>
+                        {result === 'Data Science' && <>
+                          <span className="px-3 py-1.5 bg-cyan-100 text-cyan-700 rounded-lg text-sm font-bold">📊 Analytics</span>
+                          <span className="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-bold">📈 Trends</span>
+                          <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold">🔢 Big Data</span>
                         </>}
-                        {result === 'Game Developer' && <>
-                          <span className="px-3 py-1.5 bg-orange-100 text-orange-700 rounded-lg text-sm font-bold">🎮 World Builder</span>
-                          <span className="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-bold">📖 Storyteller</span>
-                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">🎲 Interactive</span>
+                        {result === 'Cyber Security' && <>
+                          <span className="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-sm font-bold">🛡️ Defense</span>
+                          <span className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-sm font-bold">🔒 Protection</span>
+                          <span className="px-3 py-1.5 bg-orange-100 text-orange-700 rounded-lg text-sm font-bold">🕵️ Ethical Hacking</span>
+                        </>}
+                        {result === 'Game Development' && <>
+                          <span className="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-lg text-sm font-bold">🎮 Gameplay</span>
+                          <span className="px-3 py-1.5 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-bold">🌍 3D Worlds</span>
+                          <span className="px-3 py-1.5 bg-pink-100 text-pink-700 rounded-lg text-sm font-bold">🎲 Fun</span>
                         </>}
                       </div>
                     </div>
@@ -699,6 +692,7 @@ export default function App() {
                         <p className="text-slate-600 text-xs md:text-sm font-medium">Your step-by-step roadmap to a ₹40k+ job is waiting.</p>
                       </div>
                     </div>
+
 
 
 
