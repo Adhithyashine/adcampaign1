@@ -232,7 +232,7 @@ export default function App() {
 
       {/* Header/Nav */}
       <nav className={`w-full fixed top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-sm border-b border-slate-100' : 'bg-transparent border-b border-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 md:py-4 flex justify-between items-center">
+        <div className="w-full px-4 md:px-8 lg:px-12 py-3 md:py-4 flex justify-between items-center">
           <div className="flex items-center cursor-pointer" onClick={() => window.location.reload()}>
             <img src="/logo.png" alt="Brototype" className="h-10 md:h-12 w-auto" />
           </div>
