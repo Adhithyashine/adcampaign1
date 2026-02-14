@@ -261,9 +261,10 @@ export default function App() {
               className="text-center space-y-6 md:space-y-8"
             >
               <div className="space-y-5">
-                <h1 className="text-[1.8rem] sm:text-3xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter pb-1">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">AI</span> ഉപയോഗിച്ച് നിങ്ങൾക്ക് പറ്റിയ <br className="hidden md:block" />
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">IT Career</span> കണ്ടെത്തൂ, <br />
+                <h1 className="text-[1.5rem] xs:text-[1.8rem] sm:text-3xl md:text-6xl font-black text-slate-900 leading-tight tracking-tighter pb-1">
+                  <span className="inline-block whitespace-nowrap"><span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">AI</span> ഉപയോഗിച്ച് നിങ്ങൾക്ക് പറ്റിയ</span> <br className="md:hidden" />
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">IT Career</span> <br className="hidden md:block" />
+                  കണ്ടെത്തൂ, <br className="md:hidden" />
                   വെറും <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-600">2</span> മിനിറ്റിൽ...
                 </h1>
                 <p className="text-xl md:text-2xl text-slate-600 font-medium leading-relaxed">
