@@ -7,92 +7,92 @@ import confetti from 'canvas-confetti';
 const questions = [
   {
     id: 1,
-    question: "If you build your dream house, which part would you design yourself? 🏠",
+    question: "You get a free room makeover. What do you choose first?",
     options: [
-      { text: "Smart Lights & Voice Control 🗣️", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
-      { text: "Beautiful Design & Colors 🎨", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
-      { text: "Strong Gates & CCTV 🔐", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
-      { text: "A Big Gaming Room 🎮", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
+      { text: "Smart lights that change with your voice", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "Colorful paintings and cool designs", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "A high-tech digital door lock", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "A big gaming console setup", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
     ]
   },
   {
     id: 2,
-    question: "If you could invent a new tech product, what would it be? 💡",
+    question: "What do you like most about your smartphone?",
     options: [
-      { text: "A Super App for everything 📱", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
-      { text: "A Website that connects the world 🌐", cluster: "Web", icon: <Globe className="w-6 h-6" /> },
-      { text: "A Hyper-Realistic Video Game 🎲", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> },
-      { text: "A Tool that predicts the future 📊", cluster: "Data", icon: <Database className="w-6 h-6" /> }
+      { text: "All the different Apps I can use", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "The beautiful screen and visual design", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "Face ID and privacy locks", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "Siri or Google Assistant", cluster: "AI", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 3,
-    question: "You are a Detective. How would you choose to catch the thief? 🕵️‍♂️",
+    question: "It is Sunday! How do you want to spend it?",
     options: [
-      { text: "Analyze hidden clues & data 🔎", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Use AI to predict his path 🧠", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
-      { text: "Hack into the security cameras 📹", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
-      { text: "Track his phone signal 📍", cluster: "Mobile", icon: <Map className="w-6 h-6" /> }
+      { text: "Playing video games with friends", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> },
+      { text: "Organizing my files and budget", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Chatting on social media apps", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "Solving a mystery puzzle", cluster: "Security", icon: <Shield className="w-6 h-6" /> }
     ]
   },
   {
     id: 4,
-    question: "If you have free time, what sounds fun to create? 🚀",
+    question: "You are aiming for a dream job. What matters most?",
     options: [
-      { text: "A Robot that talks to you 🤖", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
-      { text: "Your own unique Mobile App 📱", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
-      { text: "A Stylish Personal Website 💻", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
-      { text: "Your own Adventure Game 👾", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
+      { text: "Creating things that look beautiful", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "Finding facts and analyzing numbers", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "Protecting secrets and safety", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "Using smart tools to do work for me", cluster: "AI", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 5,
-    question: "Which tech problem would you love to FIX for everyone? 🛠️",
+    question: "In a group project, what is your role?",
     options: [
-      { text: "Apps crashing or working slowly 📵", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
-      { text: "Websites looking ugly or broken 🚫", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
-      { text: "Hackers stealing people's money 🔓", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
-      { text: "Fake News & Wrong Information 📰", cluster: "Data", icon: <Database className="w-6 h-6" /> }
+      { text: "I design the poster and slides", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "I collect the data and facts", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "I check for any mistakes or errors", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "I find the smartest shortcut to finish", cluster: "AI", icon: <Brain className="w-6 h-6" /> }
     ]
   },
   {
     id: 6,
-    question: "Pick a Superpower to help you work! 🦸",
+    question: "If you could have a superpower, what would it be?",
     options: [
-      { text: "Super Intelligence (AI Brain) 🧠", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
-      { text: "Future Vision (Predict Trends) 🔮", cluster: "Data", icon: <Sparkles className="w-6 h-6" /> },
-      { text: "Invisibility (Unseen Guardian) 👻", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
-      { text: "World Builder (Create Realities) 🕹️", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
+      { text: "To read minds and predict the future", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "To be invisible and go anywhere", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "To remember every number and fact", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "To create a new fantasy world", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
     ]
   },
   {
     id: 7,
-    question: "What headline would you want to write about yourself? 📰",
+    question: "If you were not in this college, what would you be?",
     options: [
-      { text: "“Created the World's Best App” 📲", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
-      { text: "“Built an AI better than Humans” 🤖", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
-      { text: "“Stopped a Global Cyber Attack” 👮", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
-      { text: "“Designed the Future of the Web” 🌐", cluster: "Web", icon: <Globe className="w-6 h-6" /> }
+      { text: "An Artist or Designer", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "A Police Officer or Detective", cluster: "Security", icon: <Shield className="w-6 h-6" /> },
+      { text: "An Accountant or Banker", cluster: "Data", icon: <Database className="w-6 h-6" /> },
+      { text: "A Professional Gamer", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> }
     ]
   },
   {
     id: 8,
-    question: "If you get a super fast laptop, what will you use it for? 💻",
+    question: "You have an idea for a new App. What does it do?",
     options: [
-      { text: "Solving complex math puzzles 🔢", cluster: "Data", icon: <Database className="w-6 h-6" /> },
-      { text: "Developing high-end games 🎮", cluster: "Game", icon: <Gamepad2 className="w-6 h-6" /> },
-      { text: "Designing amazing websites 🎨", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
-      { text: "Building powerful apps 🛠️", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> }
+      { text: "It helps people chat with friends", cluster: "Mobile", icon: <Smartphone className="w-6 h-6" /> },
+      { text: "It edits photos to look amazing", cluster: "Web", icon: <Layout className="w-6 h-6" /> },
+      { text: "It does homework automatically", cluster: "AI", icon: <Brain className="w-6 h-6" /> },
+      { text: "It tracks your fitness stats", cluster: "Data", icon: <Database className="w-6 h-6" /> }
     ]
   },
   {
     id: 9,
-    question: "Which category are you? 🎓",
+    question: "Which category are you?",
     options: [
-      { text: "College Student 📚", cluster: null, icon: <Layout className="w-6 h-6" /> },
-      { text: "Graduate 🎓", cluster: null, icon: <Check className="w-6 h-6" /> },
-      { text: "Working Professional 💼", cluster: null, icon: <AppWindow className="w-6 h-6" /> },
-      { text: "Other 🌍", cluster: null, icon: <Sparkles className="w-6 h-6" /> }
+      { text: "College Student", cluster: null, icon: <Layout className="w-6 h-6" /> },
+      { text: "Graduate", cluster: null, icon: <Check className="w-6 h-6" /> },
+      { text: "Working Professional", cluster: null, icon: <AppWindow className="w-6 h-6" /> },
+      { text: "Other", cluster: null, icon: <Sparkles className="w-6 h-6" /> }
     ]
   }
 ];
@@ -118,21 +118,43 @@ export default function App() {
   }, []);
 
   // Timer Effect
-  useEffect(() => {
+  // Timer Effect (Temporarily Disabled)
+  /* useEffect(() => {
     if (step === 'assessment' && timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     }
-  }, [timeLeft, step]);
+  }, [timeLeft, step]); */
 
+  // Handle Browser Back Button
+  useEffect(() => {
+    const handlePopState = (event) => {
+      // If user presses back button and we are NOT in hero, go to hero
+      if (step !== 'hero') {
+        event.preventDefault();
+        setStep('hero');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [step]);
 
   const startAssessment = () => {
+    // Push a new state so the back button has something to "pop" to
+    window.history.pushState({ page: 'assessment' }, '', '');
+
+    // Resume if we have some answers and haven't finished yet
+    const isResuming = Object.keys(answers).length > 0 && step !== 'success' && step !== 'lead-magnet';
+
+    if (!isResuming) {
+      setCurrentQuestionIndex(0);
+      setAnswers({});
+      setResult(null);
+    }
+
     setStep('assessment');
-    setCurrentQuestionIndex(0);
-    setAnswers({});
-    setResult(null);
-    setTimeLeft(12);
-    // smooth scroll if needed, but we are replacing the view or staying in place
+    // setTimeLeft(12);
   };
 
   const handleAnswer = (optionText) => {
@@ -142,7 +164,7 @@ export default function App() {
     if (currentQuestionIndex < questions.length - 1) {
       setTimeout(() => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setTimeLeft(12); // Reset timer for next question
+        // setTimeLeft(12); // Reset timer for next question
       }, 300);
     } else {
       setTimeout(() => calculateAndAdvance(newAnswers), 300);
@@ -255,8 +277,9 @@ export default function App() {
           {step === 'hero' && (
             <motion.div
               key="hero"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               exit={{ opacity: 0, y: -20 }}
               className="text-center space-y-6 md:space-y-8"
             >
@@ -291,13 +314,14 @@ export default function App() {
                         repeatType: "loop",
                         duration: 3,
                         ease: "linear",
-                        repeatDelay: 2
+                        repeatDelay: 2,
+                        delay: 5
                       }}
                       className="absolute top-0 left-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]"
                     />
                   </div>
 
-                  <span className="relative z-10">Start My Assessment</span>
+                  <span className="relative z-10">Find My IT Career Now</span>
                   <ArrowRight className="relative z-10 w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
               </div>
@@ -396,8 +420,8 @@ export default function App() {
                       </h2>
                     </div>
 
-                    {/* Timer Progress Bar */}
-                    <div className="flex items-center gap-3 mb-6">
+                    {/* Timer Progress Bar (Temporarily Disabled) */}
+                    {/* <div className="flex items-center gap-3 mb-6">
                       <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                         <motion.div
                           className={`h-full rounded-full transition-colors duration-300 ${timeLeft < 5 ? 'bg-red-500' : timeLeft < 9 ? 'bg-amber-500' : 'bg-green-500'}`}
@@ -409,7 +433,7 @@ export default function App() {
                       <div className={`text-xs font-bold whitespace-nowrap ${timeLeft < 5 ? 'text-red-500' : 'text-slate-400'}`}>
                         {timeLeft}s left
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -600,7 +624,7 @@ export default function App() {
 
                   {/* Left Side: Visuals & Headline */}
                   {/* Left Side: Visuals */}
-                  <div className="md:col-span-5 bg-gradient-to-br from-blue-50/50 to-indigo-50/20 p-5 md:p-8 flex flex-col items-center justify-center text-center relative border-b md:border-b-0 md:border-r border-white/60">
+                  <div className="md:col-span-5 bg-gradient-to-br from-blue-50/50 to-indigo-50/20 relative border-b md:border-b-0 md:border-r border-white/60 min-h-[300px] md:min-h-full overflow-hidden">
                     {/* Decorative blobs */}
                     <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                       <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
@@ -609,16 +633,16 @@ export default function App() {
 
                     <img
                       src={
-                        result === 'Web Development' ? '/frontend_char.png' :
-                          result === 'Mobile Development' ? '/fullstack_char.png' :
-                            result === 'Data Science' ? '/data_char.png' :
-                              result === 'Cyber Security' ? '/security_char.png' :
-                                result === 'Game Development' ? '/gamedev_char.png' :
-                                  result === 'Artificial Intelligence & ML' ? '/data_char.png' : // Reuse Data char for AI
-                                    '/fullstack_char.png' // Default
+                        result === 'Web Development' ? '/web_dev_kerala.png' :
+                          result === 'Mobile Development' ? '/mobile_dev_kerala.png' :
+                            result === 'Data Science' ? '/data_ai_kerala.png' :
+                              result === 'Cyber Security' ? '/security_kerala.png' :
+                                result === 'Game Development' ? '/game_dev_kerala.png' :
+                                  result === 'Artificial Intelligence & ML' ? '/ai_specialist_happy_kerala.png' : // Reuse Data char for AI
+                                    '/mobile_dev_kerala.png' // Default
                       }
                       alt={result}
-                      className="w-32 h-32 md:w-72 md:h-72 object-contain relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover absolute inset-0 z-10"
                     />
                   </div>
 
