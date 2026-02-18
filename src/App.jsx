@@ -106,7 +106,7 @@ export default function App() {
   const [result, setResult] = useState(null);
   const [analyzingText, setAnalyzingText] = useState('Initializing AI Model...');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(12);
+
 
 
   useEffect(() => {
@@ -117,14 +117,7 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Timer Effect
-  // Timer Effect (Temporarily Disabled)
-  /* useEffect(() => {
-    if (step === 'assessment' && timeLeft > 0) {
-      const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [timeLeft, step]); */
+
 
   // Handle Browser Back Button
   useEffect(() => {
@@ -154,7 +147,7 @@ export default function App() {
     }
 
     setStep('assessment');
-    // setTimeLeft(12);
+
   };
 
   const handleAnswer = (optionText) => {
@@ -164,7 +157,6 @@ export default function App() {
     if (currentQuestionIndex < questions.length - 1) {
       setTimeout(() => {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
-        // setTimeLeft(12); // Reset timer for next question
       }, 300);
     } else {
       setTimeout(() => calculateAndAdvance(newAnswers), 300);
@@ -420,20 +412,7 @@ export default function App() {
                       </h2>
                     </div>
 
-                    {/* Timer Progress Bar (Temporarily Disabled) */}
-                    {/* <div className="flex items-center gap-3 mb-6">
-                      <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                        <motion.div
-                          className={`h-full rounded-full transition-colors duration-300 ${timeLeft < 5 ? 'bg-red-500' : timeLeft < 9 ? 'bg-amber-500' : 'bg-green-500'}`}
-                          initial={{ width: "100%" }}
-                          animate={{ width: `${(timeLeft / 12) * 100}%` }}
-                          transition={{ duration: 1, ease: "linear" }}
-                        />
-                      </div>
-                      <div className={`text-xs font-bold whitespace-nowrap ${timeLeft < 5 ? 'text-red-500' : 'text-slate-400'}`}>
-                        {timeLeft}s left
-                      </div>
-                    </div> */}
+
 
                     <div className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -635,11 +614,11 @@ export default function App() {
                       src={
                         result === 'Web Development' ? '/web_dev_kerala.png' :
                           result === 'Mobile Development' ? '/mobile_dev_kerala.png' :
-                            result === 'Data Science' ? '/data_ai_kerala.png' :
+                            result === 'Data Science' ? '/data_science_happy_kerala.png' :
                               result === 'Cyber Security' ? '/security_kerala.png' :
                                 result === 'Game Development' ? '/game_dev_kerala.png' :
                                   result === 'Artificial Intelligence & ML' ? '/ai_specialist_happy_kerala.png' : // Reuse Data char for AI
-                                    '/mobile_dev_kerala.png' // Default
+                                    '/web_dev_kerala.png' // Default
                       }
                       alt={result}
                       className="w-full h-full object-cover absolute inset-0 z-10"
