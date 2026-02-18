@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Manrope', '"Baloo Chettan 2"', 'sans-serif'],
       },
     },
   },
