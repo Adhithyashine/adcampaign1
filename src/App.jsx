@@ -224,6 +224,7 @@ export default function App() {
     // Simulate API call
     setTimeout(() => {
       setStep('success');
+      window.scrollTo({ top: 0, behavior: "smooth" });
       // Trigger Confetti
       confetti({
         particleCount: 150,
@@ -596,7 +597,7 @@ export default function App() {
               key="success"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="w-full px-4 md:px-0 md:max-w-[85%] lg:max-w-[80%] xl:max-w-[75%]"
+              className="w-full px-4 md:px-0 md:max-w-[85%] lg:max-w-[80%] xl:max-w-[75%] mt-20 md:mt-0"
             >
               <div className="bg-white/80 backdrop-blur-2xl rounded-[2rem] shadow-2xl border border-white/50 overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-12 md:min-h-[500px]">
