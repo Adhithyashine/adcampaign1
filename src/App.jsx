@@ -110,6 +110,7 @@ export default function App() {
 
 
   useEffect(() => {
+    console.log("App Version: 1.0.5 - Fixed Mobile Scroll");
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
